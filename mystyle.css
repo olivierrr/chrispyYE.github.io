@@ -1,0 +1,120 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	background-color: #E8E6E8;
+}
+
+#menu {
+
+    font-size: 16px;
+	width: auto;
+    height: 50px;
+    text-align:center;
+    background-color: #E8E6E8;  
+	margin-top: -10px;
+	margin-right: -10px;
+	font-family: "Impact", Charcoal, sans-serif;
+	float: right;
+}
+
+#menu li { 
+display: inline; 
+padding: 0 25px; 
+padding-top: 15px;
+padding-bottom: 20px;
+border-left: 1.5px solid #ccc;
+color: #60818F;
+
+
+
+}
+
+#menu ul {
+    height: auto;
+    padding: 12px 0px;
+    margin: 0px;
+}
+
+
+#menu ul:hover
+{
+	background-color:#CCD0E1;
+	color: #666;
+}
+
+#menu li:hover
+{
+	background-color:#CCD0E1;
+	color: #666;
+}
+a {
+	text-decoration: none; 
+  	color: inherit;
+	}
+	
+
+#vsebina
+{
+	display: inline-block;
+	background: #E7E4ED;
+	box-shadow: 10px 10px 5px #888888;
+	border: 2px solid #B2B1B3;
+    border-radius: 5px;
+    padding: 10px;
+    width: 400px;
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    margin-top: 50px;
+    margin-left: 40px;
+    list-style-type: none;
+    font-size: 14px;
+    line-height: 120%;
+
+
+}
+
+#naslov
+{
+	font-size: 18px;
+	font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+
+}
+#vsebina:hover
+{
+opacity: 0.3; filter: alpha(opacity=30);
+}
+
+#banner
+{
+	margin-left: -11px;
+	margin-right: -11px;
+	width: 100%;
+}
+
+header
+{
+	margin-top: -10px;
+	margin-left: -10px;
+	margin-bottom: -5px;
+	float: left;
+}
+
+
+h1{
+	
+	font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+	padding-left:45px;
+	
+}
+
+footer{
+	width: 100%;
+	background-image: url('http://i.imgur.com/xSBId0q.png');
+	background-size: 100% 100%;
+	height: :400px;
+	color: #60818F;
+	font-family: "Impact", Charcoal, sans-serif;
+	margin-top: -10px;
+	margin-bottom: -59px;
+
+}
