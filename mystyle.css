@@ -31,6 +31,10 @@ padding-top: 15px;
 padding-bottom: 20px;
 color: #60818F;
 margin:none;
+-webkit-transition: background-color 0.51s ease-out,  color 0.51s;
+    -moz-transition: background-color 0.51s ease-out,  color 0.51s;
+    -o-transition: background-color 0.51s ease-out, color 0.51s;
+    transition: background-color 0.51s ease-out, color 0.51s;
 
 }
 
@@ -47,15 +51,18 @@ margin:none;
 {
 	background-color:#3A3247;
 	color: #B3CEF5;
+	-webkit-transition: background-color 0.51s ease-out,  color 0.51s;
+    -moz-transition: background-color 0.51s ease-out,  color 0.51s;
+    -o-transition: background-color 0.51s ease-out, color 0.51s;
+    transition: background-color 0.51s ease-out, color 0.51s;
 }
+
 a {
 	text-decoration: none; 
   	color: inherit;
 	}
 	
-
-
-section #element_vsebine
+#element_vsebine
 {
 
 	display: inline-block;
@@ -68,35 +75,40 @@ section #element_vsebine
     font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
     list-style-type: none;
     font-size: 14px;
-    margin: 30px;
+    margin: 45px;
+    -webkit-transition: background-color 0.51s ease-out,  width 0.51s, height 0.51s;
+    -moz-transition: background-color 0.51s ease-out,  width 0.51s, height 0.51s;
+    -o-transition: background-color 0.51s ease-out, width 0.51s, height 0.51s;
+    transition: background-color 0.51s ease-out, width 0.51s, height 0.51s;
+
+
 }
 
-section #element_vsebine:hover
+#element_vsebine:hover
 {
 	background-color: #3A3247;
 	-webkit-transition: background-color 0.51s ease-out,  width 0.51s, height 0.51s;
     -moz-transition: background-color 0.51s ease-out,  width 0.51s, height 0.51s;
     -o-transition: background-color 0.51s ease-out, width 0.51s, height 0.51s;
     transition: background-color 0.51s ease-out, width 0.51s, height 0.51s;
-    width: 270px;
     height: 270px;
     color: #B3CEF5;
 }
 
-section #naslov
+ #naslov
 {
 	font-size: 18px;
 	font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 	text-align: center;
 }
-section li
+li
 {
 	padding: 5px;
 	text-align: center;
 }
-section hr
+hr
 {
-	width: 80%;
+	width: 90%;
 }
 
 
@@ -111,8 +123,14 @@ h1{
 footer{
 	width: 100%;
 	background-color: #3A3247;
-	height: 50px;
+	height: auto;
 	padding-left: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+	border-top: 2px, solid, black;
+	box-shadow: 0px 0px 5px #333, inset 0px 0px 2px #333;
+	margin-bottom: -10px;
 	
 }
 
