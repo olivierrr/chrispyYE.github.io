@@ -101,6 +101,10 @@ a {
 	font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 	text-align: center;
 }
+#naslov hr
+{
+	width: 80%;
+}
 li
 {
 	padding: 5px;
