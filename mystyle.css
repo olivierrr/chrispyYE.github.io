@@ -216,10 +216,10 @@ section
 	border-radius: 50%;
 	text-align: center;
 	overflow: hidden;
-	-webkit-transition: background-color 0.51s ease-out,  width 0.51s, height 0.51s, margin-bottom 0.51s, padding 0.51s;
-    -moz-transition: background-color 0.51s ease-out,  width 0.51s, height 0.51s, margin-bottom 0.51s, padding 0.51s;
-    -o-transition: background-color 0.51s ease-out, width 0.51s, height 0.51s, margin-bottom 0.51s, padding 0.51s;
-    transition: background-color 2s ease-out, width 0.51s, height 0.51s, margin-bottom 0.51s, padding 0.51s;
+	-webkit-transition: background-color 0.51s ease-out,  width 0.51s, height 0.51s, margin-bottom 0.51s, padding 0.51s, margin-left 0.51s;
+    -moz-transition: background-color 0.51s ease-out,  width 0.51s, height 0.51s, margin-bottom 0.51s, padding 0.51s, margin-left 0.51s;
+    -o-transition: background-color 0.51s ease-out, width 0.51s, height 0.51s, margin-bottom 0.51s, padding 0.51s, margin-left 0.51s;
+    transition: background-color 2s ease-out, width 0.51s, height 0.51s, margin-bottom 0.51s, padding 0.51s, margin-left 0.51s;
 }
 
 #besedilo:hover
@@ -236,8 +236,42 @@ section
 	background-color: #3C4663;
     color: #B3CEF5;
     margin-bottom: 150px;
-    -webkit-transition: background-color 0.51s ease-out,  width 0.51s, height 0.51s, margin-bottom 0.51s, padding 0.51s;
-    -moz-transition: background-color 0.51s ease-out,  width 0.51s, height 0.51s, margin-bottom 0.51s, padding 0.51s;
-    -o-transition: background-color 0.51s ease-out, width 0.51s, height 0.51s, margin-bottom 0.51s, padding 0.51s;
-    transition: background-color 2s ease-out, width 0.51s, height 0.51s, margin-bottom 0.51s, padding 0.51s;
+    -webkit-transition: background-color 0.51s ease-out,  width 0.51s, height 0.51s, margin-bottom 0.51s, padding 0.51s, margin-left 0.51s;
+    -moz-transition: background-color 0.51s ease-out,  width 0.51s, height 0.51s, margin-bottom 0.51s, padding 0.51s, margin-left 0.51s;
+    -o-transition: background-color 0.51s ease-out, width 0.51s, height 0.51s, margin-bottom 0.51s, padding 0.51s, margin-left 0.51s;
+    transition: background-color 2s ease-out, width 0.51s, height 0.51s, margin-bottom 0.51s, padding 0.51s, margin-left 0.51s;
+}
+
+#about
+{
+	font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+	padding: 10px;
+	background: #6D748C;
+	width: 800px;
+	margin-left: 145px;
+	margin-bottom: 20px;
+	border-radius: 50%;
+	text-align: center;
+	overflow: hidden;
+	-webkit-transition: background-color 0.51s ease-out,  width 0.51s, height 0.51s, margin-bottom 0.51s, padding 0.51s, margin-left 0.51s;
+    -moz-transition: background-color 0.51s ease-out,  width 0.51s, height 0.51s, margin-bottom 0.51s, padding 0.51s, margin-left 0.51s;
+    -o-transition: background-color 0.51s ease-out, width 0.51s, height 0.51s, margin-bottom 0.51s, padding 0.51s, margin-left 0.51s;
+    transition: background-color 2s ease-out, width 0.51s, height 0.51s, margin-bottom 0.51s, padding 0.51s, margin-left 0.51s;
+}
+
+#kontakt
+{
+	font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+	padding: 10px;
+	width: 450;
+	margin-left: 50px;
+	margin-bottom: 20px;
+}
+
+#konslika
+{
+	display: inline;
+	margin-top: -250px;
+	margin-bottom: 100px;
+	margin-left: 620px
 }
