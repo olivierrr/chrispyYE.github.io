@@ -58,7 +58,7 @@ body {
 #menu li:hover
 {
 	background-color:#3C4663;
-	color: #FFFFFF;
+	color: #B3CEF5;
 	-webkit-transition: background-color 0.51s ease-out,  color 0.51s;
     -moz-transition: background-color 0.51s ease-out,  color 0.51s;
     -o-transition: background-color 0.51s ease-out, color 0.51s;
@@ -196,4 +196,48 @@ section
     -webkit-transition: opacity 0.51s ease-out;
     -moz-transition: opacity 0.51s ease-out;
     -o-transition: opacity 0.51s ease-out;
+}
+
+#more
+{
+	margin: 0px, auto;
+	width: 1180px;
+	height: auto;
+}
+
+#besedilo
+{
+	font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+	padding: 10px;
+	background: #6D748C;
+	width: 800px;
+	margin-left: 145px;
+	margin-bottom: 20px;
+	border-radius: 50%;
+	text-align: center;
+	overflow: hidden;
+	-webkit-transition: background-color 0.51s ease-out,  width 0.51s, height 0.51s, margin-bottom 0.51s, padding 0.51s;
+    -moz-transition: background-color 0.51s ease-out,  width 0.51s, height 0.51s, margin-bottom 0.51s, padding 0.51s;
+    -o-transition: background-color 0.51s ease-out, width 0.51s, height 0.51s, margin-bottom 0.51s, padding 0.51s;
+    transition: background-color 2s ease-out, width 0.51s, height 0.51s, margin-bottom 0.51s, padding 0.51s;
+}
+
+#besedilo:hover
+{
+	font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+	background-color: #FF8362;
+	width: 1100px;
+	margin-left: -50px;
+	margin-bottom: 20px;
+	border-radius: 50%;
+	text-align: center;
+	overflow: hidden;
+	padding: 60px;
+	background-color: #3C4663;
+    color: #B3CEF5;
+    margin-bottom: 150px;
+    -webkit-transition: background-color 0.51s ease-out,  width 0.51s, height 0.51s, margin-bottom 0.51s, padding 0.51s;
+    -moz-transition: background-color 0.51s ease-out,  width 0.51s, height 0.51s, margin-bottom 0.51s, padding 0.51s;
+    -o-transition: background-color 0.51s ease-out, width 0.51s, height 0.51s, margin-bottom 0.51s, padding 0.51s;
+    transition: background-color 2s ease-out, width 0.51s, height 0.51s, margin-bottom 0.51s, padding 0.51s;
 }
