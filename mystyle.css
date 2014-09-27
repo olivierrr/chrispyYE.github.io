@@ -239,7 +239,7 @@ section
     -webkit-transition: background-color 0.51s ease-out,  width 0.51s, height 0.51s, margin-bottom 0.51s, padding 0.51s, margin-left 0.51s;
     -moz-transition: background-color 0.51s ease-out,  width 0.51s, height 0.51s, margin-bottom 0.51s, padding 0.51s, margin-left 0.51s;
     -o-transition: background-color 0.51s ease-out, width 0.51s, height 0.51s, margin-bottom 0.51s, padding 0.51s, margin-left 0.51s;
-    transition: background-color 2s ease-out, width 0.51s, height 0.51s, margin-bottom 0.51s, padding 0.51s, margin-left 0.51s;
+    transition: background-color 0.51s ease-out, width 0.51s, height 0.51s, margin-bottom 0.51s, padding 0.51s, margin-left 0.51s;
 }
 
 #about
@@ -256,7 +256,7 @@ section
 	-webkit-transition: background-color 0.51s ease-out,  width 0.51s, height 0.51s, margin-bottom 0.51s, padding 0.51s, margin-left 0.51s;
     -moz-transition: background-color 0.51s ease-out,  width 0.51s, height 0.51s, margin-bottom 0.51s, padding 0.51s, margin-left 0.51s;
     -o-transition: background-color 0.51s ease-out, width 0.51s, height 0.51s, margin-bottom 0.51s, padding 0.51s, margin-left 0.51s;
-    transition: background-color 2s ease-out, width 0.51s, height 0.51s, margin-bottom 0.51s, padding 0.51s, margin-left 0.51s;
+    transition: background-color 0.51s ease-out, width 0.51s, height 0.51s, margin-bottom 0.51s, padding 0.51s, margin-left 0.51s;
 }
 
 #kontakt
