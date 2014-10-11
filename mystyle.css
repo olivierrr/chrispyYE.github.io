@@ -55,7 +55,10 @@ body {
     transition: background-color 0.51s ease-out, color 0.51s;
 	padding: 10px;
 	margin-bottom: -5px;
-	
+		-webkit-transition: background-color 0.51s ease-out,  color 0.51s, border-radius 0.51s;
+    -moz-transition: background-color 0.51s ease-out,  color 0.51s, border-radius 0.51s;
+    -o-transition: background-color 0.51s ease-out, color 0.51s, border-radius 0.51s;
+    transition: background-color 0.51s ease-out, color 0.51s, border-radius 0.51s;
 	
 
 }
@@ -64,9 +67,10 @@ body {
 
 #menu li:hover
 {
-	border-radius: 80%;
+border-radius: 80%;
 	background-color:#E3493B;
 	color: #B3CEF5;
+	
 	-webkit-transition: background-color 0.51s ease-out,  color 0.51s, border-radius 0.51s;
     -moz-transition: background-color 0.51s ease-out,  color 0.51s, border-radius 0.51s;
     -o-transition: background-color 0.51s ease-out, color 0.51s, border-radius 0.51s;
