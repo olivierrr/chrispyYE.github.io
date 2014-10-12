@@ -14,7 +14,8 @@ body {
 	padding-top: 20px;
 	margin-top: -21px;
 	width: 100%;
-	margin-bottom: -50px;
+	height: 870px;
+	margin-bottom: -45px;
 
 }
 
@@ -45,7 +46,6 @@ body {
 	background-image: url('banner2.png');
     background-repeat: repeat-x;
 	height:450px;
-	margin-top: none;
 	margin-bottom: none;
 }
 
@@ -190,8 +190,11 @@ h1
 	font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 	padding-left:60px;
 	color: #3C4663;
+	font-size: 22px;
 	
 }
+
+
 
 footer{
 	width: 100%;
@@ -239,7 +242,7 @@ section
 
 #more
 {
-	margin: 0px, auto;
+	margin: 0px, auto, 20px, auto;
 	width: 1180px;
 	height: auto;
 }
