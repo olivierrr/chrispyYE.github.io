@@ -355,10 +355,6 @@ section
 	width: 50%;
 	margin: 100px auto;
 }
-#tabela_kvadratov
-{
-}
-
 #reset
 {
 	background-color: #EEBA4C;
@@ -368,17 +364,19 @@ section
 	font-size: 35px;
 	text-decoration: none;
 	cursor:pointer;
+
 }
 
 .reset_tekst
 {
-	width: 200px;
+	width: auto;
     height: 100px;
-    display: table-cell;
     vertical-align:middle;
     text-align:center;
     color: #A9DDD9;
     font-family: "Impact", Charcoal, sans-serif;
+     padding: 20px;
+    margin: -30px;
 
 }
 
@@ -395,30 +393,13 @@ section
 #rezultat
 {
 	background-color: #EEBA4C;
-	width: 200px;
+	width: 300px;
 	height: 100px;
-	text-align: center;
 	font-size: 35px;
 	text-decoration: none;
 	cursor:pointer;
 }
 
-#rezultat_tekst
-{
-    height: 100px;
-    display: table-cell;
-    vertical-align:middle;
-    text-align:center;
-    color: #A9DDD9;
-    font-family: "Impact", Charcoal, sans-serif;
-
-}
-
-#rezultat_tekst:hover
-{
-    color: #EEBA4C;
-
-}
 #rezultat:hover
 {
 	background-color: #23B5AF;
@@ -433,21 +414,19 @@ section
 {
 	position: relative;
 	width: 600px;
-	margin-top: -30px;
-	margin-bottom: -25px;
 	left: 1200px;
 }
 
 .zmaga_tekst
 {
-	width: 200px;
+	width: auto;
     height: 100px;
-    display: table-cell;
     vertical-align:middle;
     text-align:center;
     color: #A9DDD9;
     font-family: "Impact", Charcoal, sans-serif;
-
+    padding: 20px;
+    margin: -30px;
 }
 
 #zmaga_tekst:hover

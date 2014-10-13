@@ -17,13 +17,13 @@ preverjanje_zmage = function()
     console.log("igralec1:" + sum1);
     for(var i=0;i<wins.length;i++)
     {
-      if(sum1 == wins[i]){
+      if((sum1 & wins[i]) === wins[i]){
         $('p.zmaga_tekst').text('RUMENI');
         $("#konec_igre").show();
         //NE DELA!$('.konc_tekst').text('ZMAGAL JE RUMENI');
         skrij_polje();
       }
-      if(sum2 == wins[i]){
+      if((sum2 & wins[i]) === wins[i]){
         $('p.zmaga_tekst').text('RDECI');
         $("#konec_igre").show();
         //NE DELA!!! $('.konc_tekst').text('ZMAGAL JE RDECI');
@@ -31,6 +31,31 @@ preverjanje_zmage = function()
       }
     }
 }
+
+/*racunanje_zmage = function()
+{
+    var wins = [14,112,896,546,584,292,146,168];
+    var sum= 0;
+    var sum_arr=[];
+    for(i=0;i<igralec1.length)
+    {
+      sum=sum+igralec1[i];
+      if(i==2)
+      {
+        sum_arr.push(sum);
+        sum=0;
+        i=1;
+      }
+      if(i==4)
+      {
+        sum_arr.push(sum);
+        sum=0;
+        i=2;
+      }
+    }
+
+
+}*/
 
 reset_polja = function()
 {
