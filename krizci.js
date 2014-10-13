@@ -58,12 +58,7 @@ $(document).ready(function() {
     igralec2 = [];
     konec_igre=0;
 
-    if(konec_igre==1)
-    {
-      #igralno.hide('500', function() {
-        
-      });
-    }
+ 
 
 
   $("#reset").click(function() {
@@ -72,7 +67,7 @@ $(document).ready(function() {
     igralec2 = [];
     reset_polja();
     $('p.zmaga_tekst').text('REZULTAT');
-  
+    
   });
 
   $("#block1").click(function() {
