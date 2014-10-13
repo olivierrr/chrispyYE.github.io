@@ -18,12 +18,12 @@ preverjanje_zmage = function()
     for(var i=0;i<wins.length;i++)
     {
       if(sum1 == wins[i]){
-        konec_igre=1;
         $('p.zmaga_tekst').text('RUMENI');
+        skrij_polje();
       }
       if(sum2 == wins[i]){
         $('p.zmaga_tekst').text('RDECI');
-        konec_igre=1;
+        skrij_polje();
       }
     }
 }
@@ -51,15 +51,18 @@ reset_polja = function()
 
 }
 
+skrij_polje = function()
+{
+    $("#igralno").hide('500', function() {
+      
+    });
+
+}
 
 $(document).ready(function() {
 	   var stevec=0;
     igralec1 = [];
     igralec2 = [];
-    konec_igre=0;
-
- 
-
 
   $("#reset").click(function() {
     stevec=0;
@@ -67,7 +70,6 @@ $(document).ready(function() {
     igralec2 = [];
     reset_polja();
     $('p.zmaga_tekst').text('REZULTAT');
-    
   });
 
   $("#block1").click(function() {
