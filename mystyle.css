@@ -335,6 +335,7 @@ section
 	position: relative;
 	margin: 5px;
 	box-shadow: 5px 5px 5px  #3A3A3C;
+	cursor:pointer;
 }
 
 .block:hover
@@ -366,6 +367,7 @@ section
 	text-align: center;
 	font-size: 35px;
 	text-decoration: none;
+	cursor:pointer;
 }
 
 #reset_tekst
@@ -398,6 +400,7 @@ section
 	text-align: center;
 	font-size: 35px;
 	text-decoration: none;
+	cursor:pointer;
 }
 
 #rezultat_tekst
