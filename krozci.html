@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="mystyle.css">
 	<title>
 	</title>
 </head>
@@ -10,39 +11,24 @@ h1{
 	background-color: orange;
 	position: relative;
 }
-.block
-{
-	background-color: #EEBA4C;
-	width: 200px;
-	height: 200px;
-	position: relative;
-	margin: 5px;
-}
-.block_click1
-{
-	background-color: #3A3A3C;
-}
-.block_click2
-{
-	background-color: #E3493B;
-}
-#igralna plosca
-{	
-	position: relative;
-	width: 190px;
-	height: 190px;
-	background-color: blue;
-}
-#output
-{
-	color: green;
-}
+
 </style>
 <body>
+<!--ZACETEK NAVIGACIJE-->
+<nav id="menu">
+
+<ul id="navigacija">
+<li><a href="index.html">HOME</a></li>
+<li><a href="#about">ABOUT ME</a></li>
+<li><a href="#examples">PORTOFOLIO</a></li>
+<li><a href="krozci.html">KRIZCI KROZCI</a></li>
+</ul>
+
+</nav> 
 <p id="output"></p>
 
-	<div id="igralna plosca">
-	<table>
+	<div id="igralno">
+	<table id="tabela_kvadratov">
 	<tr>
 		<td><div class="block" id="block1"> </div></td>
 		<td><div class="block" id="block2"> </div></td>
@@ -60,11 +46,20 @@ h1{
 	</tr>
 	</table>
 	</div>
+	<div id="gumbi">
+	<ul>
+	<li><div id="reset"><p id="reset_tekst">RESET</p></div> </li>
+	<li><div id="rezultat"><p id="reset_tekst">REZULTAT</p></div> </li>
+	</ul>
+	</div>
 
 
-	<script type="text/javascript" src="jquery-1.11.1.min.js"></script>
+	
+<footer>
+<p>Grosuplje, 2014</p>
+<p>Kristjan Grm </p>
+</footer>
+<script type="text/javascript" src="jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" src="krizci.js"></script>
-
-
 </body>
 </html>
