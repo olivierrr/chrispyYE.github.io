@@ -370,7 +370,7 @@ section
 	cursor:pointer;
 }
 
-#reset_tekst
+.reset_tekst
 {
 	width: 200px;
     height: 100px;
@@ -405,7 +405,6 @@ section
 
 #rezultat_tekst
 {
-	width: 200px;
     height: 100px;
     display: table-cell;
     vertical-align:middle;
@@ -438,3 +437,22 @@ section
 	margin-bottom: -25px;
 	left: 1200px;
 }
+
+.zmaga_tekst
+{
+	width: 200px;
+    height: 100px;
+    display: table-cell;
+    vertical-align:middle;
+    text-align:center;
+    color: #A9DDD9;
+    font-family: "Impact", Charcoal, sans-serif;
+
+}
+
+#zmaga_tekst:hover
+{
+    color: #EEBA4C;
+
+}
+
