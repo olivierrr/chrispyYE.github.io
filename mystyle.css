@@ -334,6 +334,12 @@ section
 	height: 200px;
 	position: relative;
 	margin: 5px;
+	box-shadow: 5px 5px 5px  #3A3A3C;
+}
+
+.block:hover
+{
+	opacity: 0.8;
 }
 .block_click1
 {
