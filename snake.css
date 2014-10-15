@@ -1,0 +1,93 @@
+canvas{
+	display: block;
+	position: absolute;
+	border: 1px solid black;
+	margin: auto;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+
+body {
+	background-color: #A9DDD9;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+}
+
+#body2
+{
+	background-color: #EEBA4C;
+	padding-top: 20px;
+	margin-top: -21px;
+	width: 100%;
+	height: 870px;
+	margin-bottom: -45px;
+
+}
+
+#menu {
+
+	width: 100%;
+	height: auto;
+	position:fixed;
+    top: 0;
+    margin:auto;
+	background-color: #EEBA4C;
+	padding-bottom: 5px;
+	z-index: 1000;
+	
+}
+
+#navigacija
+{
+
+	font-size: 16px;
+	text-align:right;
+	font-family: "Impact", Charcoal, sans-serif;
+	width: 1100px;
+	height: auto;
+	padding: 12px 0px;
+	margin: -10px auto;
+	border: none;
+	
+}
+
+#menu li { 
+	display: inline-block;
+	padding-left: 15px; 
+	padding-right: 15px;
+    transition: background-color 0.51s ease-out, color 0.51s;
+	padding: 10px;
+	margin-bottom: -5px;
+		-webkit-transition: background-color 0.51s ease-out,  color 0.51s, border-radius 0.51s;
+    -moz-transition: background-color 0.51s ease-out,  color 0.51s, border-radius 0.51s;
+    -o-transition: background-color 0.51s ease-out, color 0.51s, border-radius 0.51s;
+    transition: background-color 0.51s ease-out, color 0.51s, border-radius 0.51s;
+	
+
+}
+
+
+
+#menu li:hover
+{
+border-radius: 80%;
+	background-color:#E3493B;
+	color: #B3CEF5;
+	
+	-webkit-transition: background-color 0.51s ease-out,  color 0.51s, border-radius 0.51s;
+    -moz-transition: background-color 0.51s ease-out,  color 0.51s, border-radius 0.51s;
+    -o-transition: background-color 0.51s ease-out, color 0.51s, border-radius 0.51s;
+    transition: background-color 0.51s ease-out, color 0.51s, border-radius 0.51s;
+}
+
+a {
+	text-decoration: none; 
+  	color: inherit;
+  	margin: 0 auto;
+  	width: 1100px;
+  	height: auto;
+	}
