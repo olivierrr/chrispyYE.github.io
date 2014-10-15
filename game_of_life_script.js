@@ -1,4 +1,4 @@
-var dimension = 50;
+var dimension = 30;
 var chanceOfLiveCell= 0.5;
 var table;
 var cells;
