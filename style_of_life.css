@@ -1,0 +1,9 @@
+td  {
+	border: solid 1px silver;
+	width: 5px;
+	height: 5px;
+}
+
+td.alive{
+	background-color: green;
+}
