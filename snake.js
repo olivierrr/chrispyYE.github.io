@@ -20,6 +20,28 @@ $(document).ready(function() {
 	KEY_RIGHT = 39,
 	KEY_DOWN = 40;
 
+	$("#gor").click(function(){
+		if(snake.direction!==DOWN)
+		snake.direction=UP;
+	});
+
+	$("#dol").click(function(){
+		if(snake.direction!==UP)
+		snake.direction=DOWN;
+	});
+
+	$("#levo").click(function(){
+		if(snake.direction!==RIGHT)
+		snake.direction=LEFT;
+	});
+
+	$("#desno").click(function(){
+		if(snake.direction!==LEFT)
+		snake.direction=RIGHT;
+	});
+
+
+
 
 	var grid = {
 			width: null,
@@ -153,7 +175,7 @@ function update(){
 		if(0>nx || nx>grid.width-1 || 0>ny || ny>grid.height-1
 			||grid.get(nx, ny)===SNAKE
 			){
-			$("#rekordi").append("<p id='text_rekordi'>Score:" + score);
+			$("#rekordi").append("<p>Score:" + score);
 			return init();
 		}
 
