@@ -1,168 +1,134 @@
-canvas{
-	display: block;
-	position: absolute;
-	border: 1px solid black;
-	margin: auto;
-	top: 0;
-	bottom: 200px;
-	left: 0;
-	right: 0;
-}
-
-
-body {
-	background-color: #A9DDD9;
-	padding: 0;
-	margin: 0;
-	width: 100%;
-}
-
-#body2
-{
-	background-color: #EEBA4C;
-	padding-top: 20px;
-	margin-top: -21px;
-	width: 100%;
-	height: 870px;
-	margin-bottom: -45px;
-
-}
-
-#menu {
-
-	width: 100%;
-	height: auto;
-	position:fixed;
+canvas {
+    display: block;
+    position: absolute;
+    border: 1px solid black;
+    margin: auto;
     top: 0;
-    margin:auto;
-	background-color: #EEBA4C;
-	padding-bottom: 5px;
-	z-index: 1000;
-	
+    bottom: 200px;
+    left: 0;
+    right: 0;
 }
-
-#navigacija
-{
-
-	font-size: 16px;
-	text-align:right;
-	font-family: "Impact", Charcoal, sans-serif;
-	width: 1100px;
-	height: auto;
-	padding: 12px 0px;
-	margin: -10px auto;
-	border: none;
-	
+body {
+    background-color: #A9DDD9;
+    padding: 0;
+    margin: 0;
+    width: 100%;
 }
-
-#menu li { 
-	display: inline-block;
-	padding-left: 15px; 
-	padding-right: 15px;
+#body2 {
+    background-color: #EEBA4C;
+    padding-top: 20px;
+    margin-top: -21px;
+    width: 100%;
+    height: 870px;
+    margin-bottom: -45px;
+}
+#menu {
+    width: 100%;
+    height: auto;
+    position: fixed;
+    top: 0;
+    margin: auto;
+    background-color: #EEBA4C;
+    padding-bottom: 5px;
+    z-index: 1000;
+}
+#navigacija {
+    font-size: 16px;
+    text-align: right;
+    font-family: "Impact", Charcoal, sans-serif;
+    width: 1100px;
+    height: auto;
+    padding: 12px 0px;
+    margin: -10px auto;
+    border: none;
+}
+#menu li {
+    display: inline-block;
+    padding-left: 15px;
+    padding-right: 15px;
     transition: background-color 0.51s ease-out, color 0.51s;
-	padding: 10px;
-	margin-bottom: -5px;
-		-webkit-transition: background-color 0.51s ease-out,  color 0.51s, border-radius 0.51s;
-    -moz-transition: background-color 0.51s ease-out,  color 0.51s, border-radius 0.51s;
-    -o-transition: background-color 0.51s ease-out, color 0.51s, border-radius 0.51s;
-    transition: background-color 0.51s ease-out, color 0.51s, border-radius 0.51s;
-	
-
-}
-
-
-
-#menu li:hover
-{
-border-radius: 80%;
-	background-color:#E3493B;
-	color: #B3CEF5;
-	
-	-webkit-transition: background-color 0.51s ease-out,  color 0.51s, border-radius 0.51s;
-    -moz-transition: background-color 0.51s ease-out,  color 0.51s, border-radius 0.51s;
+    padding: 10px;
+    margin-bottom: -5px;
+    -webkit-transition: background-color 0.51s ease-out, color 0.51s, border-radius 0.51s;
+    -moz-transition: background-color 0.51s ease-out, color 0.51s, border-radius 0.51s;
     -o-transition: background-color 0.51s ease-out, color 0.51s, border-radius 0.51s;
     transition: background-color 0.51s ease-out, color 0.51s, border-radius 0.51s;
 }
-
+#menu li:hover {
+    border-radius: 80%;
+    background-color: #E3493B;
+    color: #B3CEF5;
+    -webkit-transition: background-color 0.51s ease-out, color 0.51s, border-radius 0.51s;
+    -moz-transition: background-color 0.51s ease-out, color 0.51s, border-radius 0.51s;
+    -o-transition: background-color 0.51s ease-out, color 0.51s, border-radius 0.51s;
+    transition: background-color 0.51s ease-out, color 0.51s, border-radius 0.51s;
+}
 a {
-	text-decoration: none; 
-  	color: inherit;
-  	margin: 0 auto;
-  	width: 1100px;
-  	height: auto;
-	}
-
-#rekordi{
-	position: relative;
-	width: 200px;
-	height: 200px;
-	border: 1px solid black;
-	background-color: #EEBA4C;
-	float: right;
-	right: 400px;
-	top: 300px;
+    text-decoration: none;
+    color: inherit;
+    margin: 0 auto;
+    width: 1100px;
+    height: auto;
 }
-
-#text_rekordi{
-	text-align: center;
-	font-family: "Impact", Charcoal, sans-serif;
+#rekordi {
+    position: relative;
+    width: 200px;
+    height: auto;
+    border: 1px solid black;
+    background-color: #EEBA4C;
+    float: right;
+    right: 400px;
+    top: 300px;
 }
-
-
-#desno{
-	position:absolute;
-	width: 100px;
-	height: 100px;
-	background-color: #E3493B;
-	text-align: center;
-	padding: 20px;
-	bottom: 80px;
-	margin: 20px;
-	left:1000px;
-	cursor: pointer;
-	
+#text_rekordi {
+    text-align: center;
+    font-family: "Impact", Charcoal, sans-serif;
 }
-
-#levo{
-	position:absolute;
-	width: 100px;
-	height: 100px;
-	background-color: #E3493B;
-	text-align: center;
-	padding: 20px;
-	bottom: 80px;
-	margin: 20px;
-	left:700px;
-	cursor: pointer;
-	
+#desno {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: #E3493B;
+    text-align: center;
+    padding: 20px;
+    bottom: 80px;
+    margin: 20px;
+    left: 1000px;
+    cursor: pointer;
 }
-
-#gor{
-	position:absolute;
-	width: 100px;
-	height: 100px;
-	background-color: #E3493B;
-	text-align: center;
-	padding: 20px;
-	bottom: 150px;
-	margin: 20px;
-	left:850px;
-	cursor: pointer;
-	
+#levo {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: #E3493B;
+    text-align: center;
+    padding: 20px;
+    bottom: 80px;
+    margin: 20px;
+    left: 700px;
+    cursor: pointer;
 }
-
-#dol{
-	position:absolute;
-	width: 100px;
-	height: 100px;
-	background-color: #E3493B;
-	text-align: center;
-	padding: 20px;
-	bottom: 0px;
-	margin: 20px;
-	left: 850px;
-	cursor: pointer;
-	
-
+#gor {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: #E3493B;
+    text-align: center;
+    padding: 20px;
+    bottom: 150px;
+    margin: 20px;
+    left: 850px;
+    cursor: pointer;
 }
-
+#dol {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: #E3493B;
+    text-align: center;
+    padding: 20px;
+    bottom: 0px;
+    margin: 20px;
+    left: 850px;
+    cursor: pointer;
+}
