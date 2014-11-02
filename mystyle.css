@@ -27,7 +27,6 @@ body {
     background-repeat: repeat-x;
 	height:450px;
 	margin-top: 40px;
-	margin-bottom: none;
 }
 #banner1
 {
@@ -37,7 +36,6 @@ body {
     background-repeat: repeat-x;
 	height:450px;
 	margin-top: 40px;
-	margin-bottom: none;
 }
 #banner2
 {
@@ -46,7 +44,6 @@ body {
 	background-image: url('banner2.png');
     background-repeat: repeat-x;
 	height:450px;
-	margin-bottom: none;
 }
 
 #menu {
@@ -116,7 +113,7 @@ a {
 
 #krogci
 {
-	margin: 0px, auto;
+	margin: 0px auto;
 	width: 1180px;
 	height: 340px;
 }
@@ -212,7 +209,6 @@ section
 {
 	width: 1180px;
 	height: auto;
-	margin: none;
 }
 
 .slika
@@ -228,8 +224,8 @@ section
 
 .slika:hover
 {
-	 opacity: 0.7;
-    filter: alpha(opacity=40);
+    opacity: 0.7;
+    filter: alpha(opacity:40);
     -webkit-transition: opacity 0.51s ease-out;
     -moz-transition: opacity 0.51s ease-out;
     -o-transition: opacity 0.51s ease-out;
@@ -237,7 +233,7 @@ section
 
 #more
 {
-	margin: 0px, auto, 20px, auto;
+	margin: 0px auto 20px auto;
 	width: 1180px;
 	height: auto;
 }
