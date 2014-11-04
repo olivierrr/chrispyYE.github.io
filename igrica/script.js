@@ -278,6 +278,7 @@ function izris() {
 }
 
 function krogselect() {
+	reset_likov();
 	console.log("krog pos" + krog1.x + "  " + krog1.y);
 	if (mouse.x > krog1.x - krog1.r &&
 		mouse.x < krog1.x + krog1.r &&
@@ -319,7 +320,6 @@ function main() {
 				krog1.velocity = krog1.power;
 				krog1.power = 0;
 				animate();
-				reset_likov();
 			}
 			if (event.keyCode == 38) {
 				krog1.angle += 5;
@@ -342,7 +342,6 @@ function main() {
 				krog2.velocity = krog2.power;
 				krog2.power = 0;
 				animate();
-				reset_likov();
 			}
 			if (event.keyCode == 38) {
 				krog2.angle += 5;
@@ -365,7 +364,6 @@ function main() {
 				krog3.velocity = krog3.power;
 				krog3.power = 0;
 				animate();
-				reset_likov();
 			}
 			if (event.keyCode == 38) {
 				krog3.angle += 5;
