@@ -98,15 +98,14 @@ var krog1 = {
 	izrisHint: function (a) {
 		if (SELECTED != 1 && this.power === 0)
 			return 0;
-		var hintx = this.x + this.r,
+		var hintx = this.x,
 			hinty = this.y;
 		var pow = this.power;
-		while (pow > 0.1) {
+		while (pow > 1) {
 			hintx += pow * Math.cos(this.angle / -180 * Math.PI);
 			hinty += pow * Math.sin(this.angle / -180 * Math.PI);
 			pow -= pow * this.friction;
 		}
-		console.log("hintx: " + hintx + "hinty: " + hinty)
 		ctx.strokeStyle = "rgba(0,0,0,0.5)";
 		ctx.beginPath();
 		ctx.moveTo(hintx, hinty);
