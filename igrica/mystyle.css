@@ -128,8 +128,7 @@ table {
 /*konec reseta */
 
 #canvas {
-	border: 1px solid blue;
-	background-color: #F9D08B;
+	background:url(http://www.vintagehomeinterior.net/wp-content/uploads/2014/08/table-background.jpg);
 }
 image,
 canvas {
@@ -142,5 +141,4 @@ canvas {
 	-webkit-user-drag: none;
 }
 div {
-	float: left;
 }

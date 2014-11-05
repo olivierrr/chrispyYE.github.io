@@ -1,6 +1,8 @@
 // ponedeljek 3.11.2014: zacetek, spoznavanje, oblikovanje ideje, zacetek izdelave igrice "kovancki", premikanje enega kovancka (angle, power, velocity() collision detection
 // torek 4.11.2014: odbijanje od stene/od ostalih krogcev, mouse select
-// sreda 5.11.2o14: popravi colision detection, dodaj ovire, dodaj stetje prepotovane poti 
+// sreda 5.11.2o14: izboljsal collision detection, odboje,dodal stetje scora, dodal "hint" kam bo zogica potovala. dodal generator ovir.
+// četrtek 6.11.2014 popravi collison detection na ovirah (pomembno!!), dodaj end game. igranje z misko
+// petek 7.11.2014 .....
 
 /*jslint browser:true */
 
