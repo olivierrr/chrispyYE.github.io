@@ -2,9 +2,10 @@
 // torek 4.11.2014: odbijanje od stene/od ostalih krogcev, mouse select
 // sreda 5.11.2o14: popravi colision detection, dodaj ovire, dodaj stetje prepotovane poti 
 
+/*jslint browser:true */
 
-var WIDTH = 800;
-var HEIGHT = 800;
+var WIDTH = 1000;
+var HEIGHT = 600;
 var frames = 0;
 var SELECTED;
 var FPS = 60;
@@ -16,7 +17,7 @@ var canvas = document.getElementById("canvas"),
 canvas.width = WIDTH;
 canvas.height = HEIGHT;
 
-
+//za draganje canvasa
 canvas.onmousedown = function (e) {
 	var evt = e || event;
 	dragging = true;
@@ -38,33 +39,23 @@ window.onmouseup = function () {
 	dragging = false;
 };
 
-
+//generator ovir
+var barriers = [];
+for (var W = 0; W < 10000; W = W + 400) {
+	barriers.push(new barrier(W));
+}
+//izbira kovancka
 canvas.addEventListener("mousedown", doMouseDown, false);
 
+//objekt miske
 var mouse = {
 	x: null,
 	y: null
 };
-var barriers = {
-	width: Math.floor((Math.random() * (150)) + 50),
-	height: Math.floor((Math.random() * (150)) + 50),
-	x: Math.floor((Math.random() * (WIDTH - 200)) + 100),
-	y: Math.floor((Math.random() * (HEIGHT - 200)) + 100),
-	izris: function () {
-		ctx.beginPath();
-		ctx.rect(this.x, this.y, this.width, this.height);
-		ctx.fillStyle = "#336699";
-		ctx.fill();
-		ctx.strokeStyle = "#336699";
-		ctx.stroke();
-		ctx.closePath();
-	}
-};
-
-
+//krogi
 var krog1 = {
 	r: Math.floor((Math.random() * 20) + 15),
-	x: Math.floor((Math.random() * (WIDTH - 200)) + 100),
+	x: Math.floor((Math.random() * (WIDTH / 4 - 200)) + 100),
 	y: Math.floor((Math.random() * (HEIGHT - 200)) + 100),
 	power: 0,
 	angle: 0,
@@ -97,8 +88,8 @@ var krog1 = {
 
 		if (angle === 0)
 			angle = 360;
-		this.angle = angle * 2 + this.angle;
-		this.velocity = velocity * 0.8;
+		this.angle = 360 - angle;
+		this.velocity = velocity;
 		if (this.angle > 360) {
 			this.angle -= 360;
 		}
@@ -109,8 +100,8 @@ var krog1 = {
 
 var krog2 = {
 	r: Math.floor((Math.random() * 20) + 15),
-	x: Math.floor((Math.random() * (WIDTH - 200)) + 100),
-	y: Math.floor((Math.random() * (HEIGHT - 200)) + 100),
+	x: Math.floor((Math.random() * (WIDTH / 4 - 200)) + 100 + WIDTH / 4),
+	y: Math.floor((Math.random() * (HEIGHT / 2 - 200)) + 100),
 	power: 0,
 	angle: 0,
 	velocity: 0,
@@ -142,8 +133,8 @@ var krog2 = {
 
 		if (angle === 0)
 			angle = 360;
-		this.angle = angle * 2 + this.angle;
-		this.velocity = velocity * 0.8;
+		this.angle = 360 - angle;
+		this.velocity = velocity;
 		if (this.angle > 360) {
 			this.angle -= 360;
 		}
@@ -152,8 +143,8 @@ var krog2 = {
 
 var krog3 = {
 	r: Math.floor((Math.random() * 20) + 15),
-	x: Math.floor((Math.random() * (WIDTH - 200)) + 100),
-	y: Math.floor((Math.random() * (HEIGHT - 200)) + 100),
+	x: Math.floor((Math.random() * (WIDTH / 4 - 200)) + WIDTH / 4),
+	y: Math.floor((Math.random() * (HEIGHT / 2 - 200)) + 100 + HEIGHT / 2),
 	power: 0,
 	angle: 0,
 	velocity: 0,
@@ -172,7 +163,7 @@ var krog3 = {
 	update: function () {
 		this.x += this.velocity * Math.cos(this.angle / -180 * Math.PI);
 		this.y += this.velocity * Math.sin(this.angle / -180 * Math.PI);
-		if (this.velocity > 0.1) {
+		if (this.velocity > 0.01) {
 			this.velocity -= this.velocity * this.friction;
 		} else {
 			this.velocity = 0;
@@ -185,14 +176,31 @@ var krog3 = {
 
 		if (angle === 0)
 			angle = 360;
-		this.angle = angle * 2 + this.angle;
-		this.velocity = velocity * 0.8;
+		this.angle = 360 - angle;
+		this.velocity = velocity;
 		if (this.angle > 360) {
 			this.angle -= 360;
 		}
 	}
 
 };
+
+//ovire
+function barrier(W) {
+	this.width = Math.floor((Math.random() * (200)) + 50);
+	this.height = Math.floor((Math.random() * (200)) + 50);
+	this.x = Math.floor((Math.random() * (WIDTH / 2 - 200)) + W + 100 + WIDTH / 2);
+	this.y = Math.floor((Math.random() * (HEIGHT)));
+	this.izris = function () {
+		ctx.beginPath();
+		ctx.rect(this.x, this.y, this.width, this.height);
+		ctx.fillStyle = "#336699";
+		ctx.fill();
+		ctx.strokeStyle = "#336699";
+		ctx.stroke();
+		ctx.closePath();
+	};
+}
 
 function liknormal() {
 	krog1.color = "#82AFF9";
@@ -238,7 +246,8 @@ function animate() {
 		krog1.update();
 		krog2.update();
 		krog3.update();
-		collision();
+		if (krog1.velocity > 0 || krog2.velocity > 0 || krog3.velocity > 0)
+			collision();
 		izris();
 	}, 1000 / FPS);
 
@@ -267,53 +276,91 @@ function collision() {
 		krog3.y > HEIGHT - krog3.r || krog3.y < 0 + krog3.r) {
 		krog3.reflect(krog3.angle, krog3.velocity);
 	}
-	//primerja krog1 in krog2 če je krog1 premikajoči
+	//primerja krog1 in krog2 in krog3 če je krog1 premikajoči
 	if (SELECTED == 1) {
 		dx = krog1.x - krog2.x;
 		dy = krog1.y - krog2.y;
 		radii = krog1.r + krog2.r;
 		if ((dx * dx) + (dy * dy) < radii * radii) {
-			krog1.reflect(krog1.angle, krog1.velocity);
-			krog2.reflect(krog1.angle + 180, krog1.velocity);
+			krog1.reflect(krog1.angle + 90, krog1.velocity);
+			krog2.reflect(krog1.angle, krog1.velocity);
+		}
+		dx = krog1.x - krog3.x;
+		dy = krog1.y - krog3.y;
+		radii = krog1.r + krog3.r;
+		if ((dx * dx) + (dy * dy) < radii * radii) {
+			krog1.reflect(krog1.angle + 90, krog1.velocity);
+			krog3.reflect(krog1.angle, krog1.velocity);
 		}
 	}
-	//primerja krog 1 in krog2 če je krog2 premikajoči
+
+	//primerja krog 1 in krog2 in krog3 če je krog2 premikajoči
 	if (SELECTED == 2) {
 		dx = krog1.x - krog2.x;
 		dy = krog1.y - krog2.y;
 		radii = krog1.r + krog2.r;
 		if ((dx * dx) + (dy * dy) < radii * radii) {
-			krog2.reflect(krog2.angle, krog2.velocity);
-			krog1.reflect(krog2.angle + 180, krog2.velocity);
+			krog2.reflect(krog2.angle + 90, krog2.velocity);
+			krog1.reflect(krog2.angle, krog2.velocity);
+		}
+		dx = krog3.x - krog2.x;
+		dy = krog3.y - krog2.y;
+		radii = krog3.r + krog2.r;
+		if ((dx * dx) + (dy * dy) < radii * radii) {
+			krog2.reflect(krog2.angle + 90, krog2.velocity);
+			krog3.reflect(krog2.angle, krog2.velocity);
 		}
 	}
 
-
-	//primerja krog1 in krog3
-	dx = krog1.x - krog3.x;
-	dy = krog1.y - krog3.y;
-	radii = krog1.r + krog3.r;
-	if ((dx * dx) + (dy * dy) < radii * radii) {
-		krog1.reflect(krog1.angle, krog1.velocity);
-		krog3.reflect(krog1.angle + 180, krog1.velocity);
-	}
-	//primerja krog2 in krog3
-	dx = krog2.x - krog3.x;
-	dy = krog2.y - krog3.y;
-	radii = krog2.r + krog3.r;
-	if ((dx * dx) + (dy * dy) < (radii * radii)) {
-		krog2.reflect(krog2.angle, krog2.velocity);
-		krog3.reflect(krog2.angle + 180, krog2.velocity);
+	//primerja krog 1 in krog2 in krog3 če je krog3 premikajoči
+	if (SELECTED == 3) {
+		dx = krog1.x - krog3.x;
+		dy = krog1.y - krog3.y;
+		radii = krog1.r + krog3.r;
+		if ((dx * dx) + (dy * dy) < radii * radii) {
+			krog3.reflect(krog3.angle + 90, krog3.velocity);
+			krog1.reflect(krog3.angle, krog3.velocity);
+		}
+		dx = krog2.x - krog3.x;
+		dy = krog2.y - krog3.y;
+		radii = krog2.r + krog3.r;
+		if ((dx * dx) + (dy * dy) < radii * radii) {
+			krog3.reflect(krog3.angle + 90, krog3.velocity);
+			krog2.reflect(krog3.angle, krog3.velocity);
+		}
 	}
 
 	//primerja kroge z ovirami
-	dx = krog1.x - barriers.x;
-	dy = krog1.x - barriers.y;
-	radii = krog1.r + barriers.width / 2;
-	if (RectCircleColliding(krog1, barriers)) {
-		krog1.reflect(krog1.angle, krog1.velocity);
-	}
+	if (krog1.velocity > 0) {
+		for (var i = 0; i < barriers.length; i++) {
 
+			if (RectCircleColliding(krog1, barriers[i])) {
+				console.log(i);
+				krog1.reflect(krog1.angle+180, krog1.velocity);
+			}
+		}
+
+	}
+	if (krog2.velocity > 0) {
+		for (var i = 0; i < barriers.length; i++) {
+
+			if (RectCircleColliding(krog2, barriers[i])) {
+				console.log(i);
+				krog2.reflect(krog2.angle+180, krog2.velocity);
+			}
+		}
+
+	}
+	if (krog3.velocity > 0) {
+		for (var i = 0; i < barriers.length; i++) {
+
+			if (RectCircleColliding(krog3, barriers[i])) {
+				console.log(i);
+				krog1.reflect(krog3.angle+180, krog3.velocity);
+			}
+		}
+
+	}
 
 }
 
@@ -325,24 +372,26 @@ function RectCircleColliding(krog1, barriers) {
 		return false;
 	}
 	if (distY > (barriers.height / 2 + krog1.r)) {
-	return false;
-}
+		return false;
+	}
 
-if (distX <= (barriers.width / 2)) {
-	return true;
-}
-if (distY <= (barriers.height / 2)) {
-	return true;
-}
+	if (distX <= (barriers.width / 2)) {
+		return true;
+	}
+	if (distY <= (barriers.height / 2)) {
+		return true;
+	}
 }
 
 
 function izris() {
-	ctx.clearRect(-translated, 0, HEIGHT, WIDTH);
+	ctx.clearRect(-translated, 0, WIDTH, HEIGHT);
 	krog1.izris(); //krog1 izris
 	krog2.izris(); //krog2 izris
 	krog3.izris(); //krog3 izris
-	barriers.izris();
+	for (var i = 0; i < barriers.length; i++) {
+		barriers[i].izris();
+	}
 	switch (SELECTED) {
 	case 1:
 		ctx.fillText("angle: " + krog1.angle, 10 - translated, 10);
