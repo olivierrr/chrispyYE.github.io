@@ -85,7 +85,7 @@ var krog1 = {
 
 	},
 	reflect: function (angle, velocity) {
-
+		krog1.reflect.called = true;
 		if (angle === 0)
 			angle = 360;
 		this.angle = 360 - angle;
@@ -130,7 +130,7 @@ var krog2 = {
 
 	},
 	reflect: function (angle, velocity) {
-
+		krog2.reflect.called = true;
 		if (angle === 0)
 			angle = 360;
 		this.angle = 360 - angle;
@@ -173,7 +173,7 @@ var krog3 = {
 
 	},
 	reflect: function (angle, velocity) {
-
+		krog3.reflect.called = true;
 		if (angle === 0)
 			angle = 360;
 		this.angle = 360 - angle;
@@ -240,14 +240,13 @@ function doMouseDown(event) {
 }
 
 function animate() {
-	setTimeout(function () {
-		frames++;
-		window.requestAnimationFrame(animate);
+		setTimeout(function () {
 		krog1.update();
 		krog2.update();
 		krog3.update();
 		if (krog1.velocity > 0 || krog2.velocity > 0 || krog3.velocity > 0)
 			collision();
+			window.requestAnimationFrame(animate);
 		izris();
 	}, 1000 / FPS);
 
@@ -262,10 +261,17 @@ function reset_likov() {
 	krog3.angle = 0;
 }
 
+function resetcalled(){
+	krog1.reflect.called = false;
+	krog2.reflect.called = false;
+	krog3.reflect.called = false;
+}
+
 function collision() {
 	var dx, dy, radii;
 	if ( //preverja robove krog1
-		krog1.y > HEIGHT - krog1.r || krog1.y < 0 + krog1.r) {
+		krog1.y > HEIGHT - krog1.r || krog1.y < 0  + krog1.r) {
+		if(krog1.reflect.called != true)
 		krog1.reflect(krog1.angle, krog1.velocity);
 	}
 	if ( //preverja robove krog2
@@ -330,13 +336,17 @@ function collision() {
 		}
 	}
 
+	
 	//primerja kroge z ovirami
 	if (krog1.velocity > 0) {
 		for (var i = 0; i < barriers.length; i++) {
-
 			if (RectCircleColliding(krog1, barriers[i])) {
-				console.log(i);
-				krog1.reflect(krog1.angle+180, krog1.velocity);
+				if (barriers[i].x-barriers[i].width/2-krog1.x+krog1.r <= 0 || krog1.x-krog1.r - barriers[i].x+barriers[i].width/2 <=0){
+					krog1.reflect(krog1.angle + 180, krog1.velocity);
+				}
+				if (barriers[i].y + barriers[i].height/2 - krog1.y - krog1.r  <=0) {
+					krog1.reflect(krog1.angle + 90, krog1.velocity);
+				}
 			}
 		}
 
@@ -345,24 +355,36 @@ function collision() {
 		for (var i = 0; i < barriers.length; i++) {
 
 			if (RectCircleColliding(krog2, barriers[i])) {
-				console.log(i);
-				krog2.reflect(krog2.angle+180, krog2.velocity);
+				if (barriers[i].x-barriers[i].width/2-krog2.x+krog2.r <= 0 || krog2.x-krog2.r - barriers[i].x+barriers[i].width/2 <=0) {
+					krog2.reflect(krog2.angle + 180, krog2.velocity);
+				}
+				if (barriers[i].y + barriers[i].height/2 - krog2.y - krog2.r  <=0) {
+					krog2.reflect(krog2.angle + 90, krog2.velocity);
+				}
 			}
 		}
-
 	}
+
+
 	if (krog3.velocity > 0) {
 		for (var i = 0; i < barriers.length; i++) {
 
 			if (RectCircleColliding(krog3, barriers[i])) {
-				console.log(i);
-				krog1.reflect(krog3.angle+180, krog3.velocity);
+				if (barriers[i].x-barriers[i].width/2-krog3.x+krog3.r <= 0 || krog3.x-krog3.r - barriers[i].x+barriers[i].width/2 <=0) {
+					krog3.reflect(krog3.angle + 180, krog3.velocity);
+				}
+				if (barriers[i].y + barriers[i].height/2 - krog3.y - krog3.r  <=0) {
+					krog3.reflect(krog3.angle + 90, krog3.velocity);
+				}
 			}
 		}
 
 	}
-
+	else
+			resetcalled();
 }
+
+
 
 function RectCircleColliding(krog1, barriers) {
 	var distX = Math.abs(krog1.x - barriers.x - barriers.width / 2);
