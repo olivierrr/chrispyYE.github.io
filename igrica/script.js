@@ -108,10 +108,10 @@ var krog1 = {
 			hinty += pow * Math.sin(this.angle / -180 * Math.PI);
 			pow -= pow * this.friction;
 		}
-		ctx.strokeStyle = "rgba(0,0,0,0.5)";
+		ctx.strokeStyle = "rgba(255,255,255,0.5)";
 		ctx.beginPath();
 		ctx.moveTo(hintx, hinty);
-		if (this.offsetline == 0)
+		if (this.offsetline === 0)
 			this.offsetline = 40;
 		ctx.lineDashOffset = this.offsetline;
 		ctx.setLineDash([5]);
@@ -178,11 +178,10 @@ var krog2 = {
 			hinty += pow * Math.sin(this.angle / -180 * Math.PI);
 			pow -= pow * this.friction;
 		}
-		console.log("hintx: " + hintx + "hinty: " + hinty)
-		ctx.strokeStyle = "rgba(0,0,0,0.5)";
+		ctx.strokeStyle = "rgba(255,255,255,0.5)";
 		ctx.beginPath();
 		ctx.moveTo(hintx, hinty);
-		if (this.offsetline == 0)
+		if (this.offsetline === 0)
 			this.offsetline = 40;
 		ctx.lineDashOffset = this.offsetline;
 		ctx.setLineDash([5]);
@@ -247,11 +246,10 @@ offsetline: 40,
 			hinty += pow * Math.sin(this.angle / -180 * Math.PI);
 			pow -= pow * this.friction;
 		}
-		console.log("hintx: " + hintx + "hinty: " + hinty)
-		ctx.strokeStyle = "rgba(0,0,0,0.5)";
+		ctx.strokeStyle = "rgba(255,255,255,0.5)";
 		ctx.beginPath();
 		ctx.moveTo(hintx, hinty);
-		if (this.offsetline == 0)
+		if (this.offsetline === 0)
 			this.offsetline = 40;
 		ctx.lineDashOffset = this.offsetline;
 		ctx.setLineDash([5]);
@@ -331,6 +329,12 @@ function animate() {
 }
 function endgame(){
 	
+}
+
+function drawbackground(){
+	var img= new Image();
+	img.src = "http://www.vintagehomeinterior.net/wp-content/uploads/2014/08/table-background.jpg";
+	ctx.drawImage(img, -translated , 0);
 }
 
 function reset_likov() {
@@ -508,6 +512,7 @@ function RectCircleColliding(krog1, barriers) {
 
 function izris() {
 	ctx.clearRect(-translated, 0, WIDTH, HEIGHT);
+	drawbackground();
 	krog1.izris(); //krog1 izris
 	krog2.izris(); //krog2 izris
 	krog3.izris(); //krog3 izris
@@ -528,7 +533,7 @@ function izris() {
 		ctx.fillText("power: " + krog3.power, 10 - translated, 25);
 		break;
 	}
-	ctx.font = 'italic 40pt Calibri'
+	ctx.font = 'italic 40pt Calibri';
 	ctx.fillText("SCORE: " + getscore(), 10-translated, 550);
 
 }
