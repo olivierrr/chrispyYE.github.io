@@ -327,6 +327,9 @@ function animate() {
 	}, 1000 / FPS);
 
 }
+function endgame(){
+	
+}
 
 function reset_likov() {
 	krog1.power = 0;
@@ -341,6 +344,16 @@ function resetcalled() {
 	krog1.reflect.called = false;
 	krog2.reflect.called = false;
 	krog3.reflect.called = false;
+}
+
+function getscore(){
+	var max = krog1.x;
+	if(krog2.x>max)
+		max = krog2.x;
+	if(krog3.x > max)
+		max = krog3.x;
+	max = Math.round(max);
+	return max;
 }
 
 function collision() {
@@ -454,10 +467,10 @@ function collision() {
 			if (RectCircleColliding(krog3, barriers[i])) {
 				if (krog3.reflect.called !== true) {
 					{
-						if (barriers[i].x - barriers[i].width / 2 - krog3.x + krog3.r <= 0 || krog3.x - krog3.r - barriers[i].x + barriers[i].width / 2 <= 0) {
+						if (barriers[i].x - barriers[i].width / 2 - krog3.x + krog3.r*2 <= 0 || krog3.x - krog3.r - barriers[i].x + barriers[i].width / 2 <= 0) {
 							krog3.reflect(krog3.angle + 180, krog3.velocity);
 						}
-						if (barriers[i].y + barriers[i].height / 2 - krog3.y - krog3.r <= 0) {
+						if (barriers[i].y - barriers[i].height / 2 - krog3.y + krog3.r*2 <= 0 || krog3.y-krog3.y*2 -barriers[i].y+ barriers[i].height /2 <=0) {
 							krog3.reflect(krog3.angle + 90, krog3.velocity);
 						}
 					}
@@ -513,6 +526,8 @@ function izris() {
 		ctx.fillText("power: " + krog3.power, 10 - translated, 25);
 		break;
 	}
+	ctx.font = 'italic 40pt Calibri'
+	ctx.fillText("SCORE: " + getscore(), 10-translated, 550);
 
 }
 
