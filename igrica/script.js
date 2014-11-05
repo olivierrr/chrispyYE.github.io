@@ -16,7 +16,7 @@ var canvas = document.getElementById("canvas"),
 	translated = 0;
 canvas.width = WIDTH;
 canvas.height = HEIGHT;
-
+animate();
 //za draganje canvasa
 canvas.onmousedown = function (e) {
 	var evt = e || event;
@@ -62,14 +62,16 @@ var krog1 = {
 	velocity: 0,
 	color: "#82AFF9",
 	friction: 0.05,
+	offsetline: 40,
 	izris: function () {
 		ctx.beginPath();
-		ctx.arc(krog1.x, krog1.y, krog1.r, 0, 2 * Math.PI);
+		ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
 		ctx.fillStyle = this.color;
 		ctx.fill();
 		ctx.strokeStyle = this.color;
 		ctx.stroke();
 		ctx.closePath();
+		this.izrisHint();
 
 	},
 	update: function () {
@@ -81,8 +83,7 @@ var krog1 = {
 			this.velocity = 0;
 		}
 		if (this.angle > 360)
-			this.agnle -= 360;
-
+			this.angle -= 360;
 	},
 	reflect: function (angle, velocity) {
 		krog1.reflect.called = true;
@@ -93,6 +94,31 @@ var krog1 = {
 		if (this.angle > 360) {
 			this.angle -= 360;
 		}
+	},
+	izrisHint: function (a) {
+		if (SELECTED != 1 && this.power === 0)
+			return 0;
+		var hintx = this.x + this.r,
+			hinty = this.y;
+		var pow = this.power;
+		while (pow > 0.1) {
+			hintx += pow * Math.cos(this.angle / -180 * Math.PI);
+			hinty += pow * Math.sin(this.angle / -180 * Math.PI);
+			pow -= pow * this.friction;
+		}
+		console.log("hintx: " + hintx + "hinty: " + hinty)
+		ctx.strokeStyle = "rgba(0,0,0,0.5)";
+		ctx.beginPath();
+		ctx.moveTo(hintx, hinty);
+		if (this.offsetline == 0)
+			this.offsetline = 40;
+		ctx.lineDashOffset = this.offsetline;
+		ctx.setLineDash([5]);
+		ctx.lineTo(this.x, this.y);
+		ctx.stroke();
+		ctx.closePath();
+		this.offsetline++;
+		ctx.setLineDash([0]);
 	}
 };
 
@@ -107,14 +133,16 @@ var krog2 = {
 	velocity: 0,
 	color: "#9881F5",
 	friction: 0.05,
+	offsetline: 40,
 	izris: function () {
 		ctx.beginPath();
-		ctx.arc(krog2.x, krog2.y, krog2.r, 0, 2 * Math.PI);
+		ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
 		ctx.fillStyle = this.color;
 		ctx.fill();
 		ctx.strokeStyle = this.color;
 		ctx.stroke();
 		ctx.closePath();
+		this.izrisHint();
 
 	},
 	update: function () {
@@ -126,11 +154,10 @@ var krog2 = {
 			this.velocity = 0;
 		}
 		if (this.angle > 360)
-			this.agnle -= 360;
-
+			this.angle -= 360;
 	},
 	reflect: function (angle, velocity) {
-		krog2.reflect.called = true;
+		krog1.reflect.called = true;
 		if (angle === 0)
 			angle = 360;
 		this.angle = 360 - angle;
@@ -138,6 +165,31 @@ var krog2 = {
 		if (this.angle > 360) {
 			this.angle -= 360;
 		}
+	},
+	izrisHint: function (a) {
+		if (SELECTED != 2 && this.power === 0)
+			return 0;
+		var hintx = this.x + this.r,
+			hinty = this.y;
+		var pow = this.power;
+		while (pow > 0.1) {
+			hintx += pow * Math.cos(this.angle / -180 * Math.PI);
+			hinty += pow * Math.sin(this.angle / -180 * Math.PI);
+			pow -= pow * this.friction;
+		}
+		console.log("hintx: " + hintx + "hinty: " + hinty)
+		ctx.strokeStyle = "rgba(0,0,0,0.5)";
+		ctx.beginPath();
+		ctx.moveTo(hintx, hinty);
+		if (this.offsetline == 0)
+			this.offsetline = 40;
+		ctx.lineDashOffset = this.offsetline;
+		ctx.setLineDash([5]);
+		ctx.lineTo(this.x, this.y);
+		ctx.stroke();
+		ctx.closePath();
+		this.offsetline++;
+		ctx.setLineDash([0]);
 	}
 };
 
@@ -150,30 +202,31 @@ var krog3 = {
 	velocity: 0,
 	color: "#F97D81",
 	friction: 0.05,
+offsetline: 40,
 	izris: function () {
 		ctx.beginPath();
-		ctx.arc(krog3.x, krog3.y, krog3.r, 0, 2 * Math.PI);
+		ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
 		ctx.fillStyle = this.color;
 		ctx.fill();
 		ctx.strokeStyle = this.color;
 		ctx.stroke();
 		ctx.closePath();
+		this.izrisHint();
 
 	},
 	update: function () {
 		this.x += this.velocity * Math.cos(this.angle / -180 * Math.PI);
 		this.y += this.velocity * Math.sin(this.angle / -180 * Math.PI);
-		if (this.velocity > 0.01) {
+		if (this.velocity > 0.1) {
 			this.velocity -= this.velocity * this.friction;
 		} else {
 			this.velocity = 0;
 		}
 		if (this.angle > 360)
-			this.agnle -= 360;
-
+			this.angle -= 360;
 	},
 	reflect: function (angle, velocity) {
-		krog3.reflect.called = true;
+		krog1.reflect.called = true;
 		if (angle === 0)
 			angle = 360;
 		this.angle = 360 - angle;
@@ -181,8 +234,32 @@ var krog3 = {
 		if (this.angle > 360) {
 			this.angle -= 360;
 		}
+	},
+	izrisHint: function (a) {
+		if (SELECTED != 3 && this.power === 0)
+			return 0;
+		var hintx = this.x + this.r,
+			hinty = this.y;
+		var pow = this.power;
+		while (pow > 0.1) {
+			hintx += pow * Math.cos(this.angle / -180 * Math.PI);
+			hinty += pow * Math.sin(this.angle / -180 * Math.PI);
+			pow -= pow * this.friction;
+		}
+		console.log("hintx: " + hintx + "hinty: " + hinty)
+		ctx.strokeStyle = "rgba(0,0,0,0.5)";
+		ctx.beginPath();
+		ctx.moveTo(hintx, hinty);
+		if (this.offsetline == 0)
+			this.offsetline = 40;
+		ctx.lineDashOffset = this.offsetline;
+		ctx.setLineDash([5]);
+		ctx.lineTo(this.x, this.y);
+		ctx.stroke();
+		ctx.closePath();
+		this.offsetline++;
+		ctx.setLineDash([0]);
 	}
-
 };
 
 //ovire
@@ -240,13 +317,13 @@ function doMouseDown(event) {
 }
 
 function animate() {
-		setTimeout(function () {
+	setTimeout(function () {
 		krog1.update();
 		krog2.update();
 		krog3.update();
 		if (krog1.velocity > 0 || krog2.velocity > 0 || krog3.velocity > 0)
 			collision();
-			window.requestAnimationFrame(animate);
+		window.requestAnimationFrame(animate);
 		izris();
 	}, 1000 / FPS);
 
@@ -261,7 +338,7 @@ function reset_likov() {
 	krog3.angle = 0;
 }
 
-function resetcalled(){
+function resetcalled() {
 	krog1.reflect.called = false;
 	krog2.reflect.called = false;
 	krog3.reflect.called = false;
@@ -270,17 +347,19 @@ function resetcalled(){
 function collision() {
 	var dx, dy, radii;
 	if ( //preverja robove krog1
-		krog1.y > HEIGHT - krog1.r || krog1.y < 0  + krog1.r) {
-		if(krog1.reflect.called != true)
-		krog1.reflect(krog1.angle, krog1.velocity);
+		krog1.y > HEIGHT - krog1.r || krog1.y < 0 + krog1.r) {
+		if (krog1.reflect.called !== true)
+			krog1.reflect(krog1.angle, krog1.velocity);
 	}
 	if ( //preverja robove krog2
 		krog2.y > HEIGHT - krog2.r || krog2.y < 0 + krog2.r) {
-		krog2.reflect(krog2.angle, krog2.velocity);
+		if (krog2.reflect.called !== true)
+			krog2.reflect(krog2.angle, krog2.velocity);
 	}
 	if ( //preverja robove krog3
 		krog3.y > HEIGHT - krog3.r || krog3.y < 0 + krog3.r) {
-		krog3.reflect(krog3.angle, krog3.velocity);
+		if (krog3.reflect.called !== true)
+			krog3.reflect(krog3.angle, krog3.velocity);
 	}
 	//primerja krog1 in krog2 in krog3 če je krog1 premikajoči
 	if (SELECTED == 1) {
@@ -336,16 +415,18 @@ function collision() {
 		}
 	}
 
-	
+
 	//primerja kroge z ovirami
 	if (krog1.velocity > 0) {
 		for (var i = 0; i < barriers.length; i++) {
 			if (RectCircleColliding(krog1, barriers[i])) {
-				if (barriers[i].x-barriers[i].width/2-krog1.x+krog1.r <= 0 || krog1.x-krog1.r - barriers[i].x+barriers[i].width/2 <=0){
-					krog1.reflect(krog1.angle + 180, krog1.velocity);
-				}
-				if (barriers[i].y + barriers[i].height/2 - krog1.y - krog1.r  <=0) {
-					krog1.reflect(krog1.angle + 90, krog1.velocity);
+				if (krog1.reflect.called !== true) {
+					if (barriers[i].x - barriers[i].width / 2 - krog1.x + krog1.r <= 0 || krog1.x - krog1.r - barriers[i].x + barriers[i].width / 2 <= 0) {
+						krog1.reflect(krog1.angle + 180, krog1.velocity);
+					}
+					if (barriers[i].y + barriers[i].height / 2 - krog1.y - krog1.r <= 0) {
+						krog1.reflect(krog1.angle + 90, krog1.velocity);
+					}
 				}
 			}
 		}
@@ -355,11 +436,13 @@ function collision() {
 		for (var i = 0; i < barriers.length; i++) {
 
 			if (RectCircleColliding(krog2, barriers[i])) {
-				if (barriers[i].x-barriers[i].width/2-krog2.x+krog2.r <= 0 || krog2.x-krog2.r - barriers[i].x+barriers[i].width/2 <=0) {
-					krog2.reflect(krog2.angle + 180, krog2.velocity);
-				}
-				if (barriers[i].y + barriers[i].height/2 - krog2.y - krog2.r  <=0) {
-					krog2.reflect(krog2.angle + 90, krog2.velocity);
+				if (krog2.reflect.called !== true) {
+					if (barriers[i].x - barriers[i].width / 2 - krog2.x + krog2.r <= 0 || krog2.x - krog2.r - barriers[i].x + barriers[i].width / 2 <= 0) {
+						krog2.reflect(krog2.angle + 180, krog2.velocity);
+					}
+					if (barriers[i].y + barriers[i].height / 2 - krog2.y - krog2.r <= 0) {
+						krog2.reflect(krog2.angle + 90, krog2.velocity);
+					}
 				}
 			}
 		}
@@ -370,18 +453,21 @@ function collision() {
 		for (var i = 0; i < barriers.length; i++) {
 
 			if (RectCircleColliding(krog3, barriers[i])) {
-				if (barriers[i].x-barriers[i].width/2-krog3.x+krog3.r <= 0 || krog3.x-krog3.r - barriers[i].x+barriers[i].width/2 <=0) {
-					krog3.reflect(krog3.angle + 180, krog3.velocity);
-				}
-				if (barriers[i].y + barriers[i].height/2 - krog3.y - krog3.r  <=0) {
-					krog3.reflect(krog3.angle + 90, krog3.velocity);
+				if (krog3.reflect.called !== true) {
+					{
+						if (barriers[i].x - barriers[i].width / 2 - krog3.x + krog3.r <= 0 || krog3.x - krog3.r - barriers[i].x + barriers[i].width / 2 <= 0) {
+							krog3.reflect(krog3.angle + 180, krog3.velocity);
+						}
+						if (barriers[i].y + barriers[i].height / 2 - krog3.y - krog3.r <= 0) {
+							krog3.reflect(krog3.angle + 90, krog3.velocity);
+						}
+					}
 				}
 			}
 		}
 
-	}
-	else
-			resetcalled();
+	} else
+		resetcalled();
 }
 
 
@@ -428,6 +514,7 @@ function izris() {
 		ctx.fillText("power: " + krog3.power, 10 - translated, 25);
 		break;
 	}
+
 }
 
 function krogselect() {
@@ -459,7 +546,6 @@ function main() {
 
 	izris();
 	document.addEventListener('mousedown', function (event) {
-		animate();
 		console.log("mouse pos x:" + mouse.x + " y: " + mouse.y);
 		SELECTED = krogselect();
 		liknormal();
@@ -474,7 +560,7 @@ function main() {
 			if (event.keyCode == 88) {
 				krog1.velocity = krog1.power;
 				krog1.power = 0;
-				animate();
+
 			}
 			if (event.keyCode == 38) {
 				krog1.angle += 5;
@@ -486,6 +572,7 @@ function main() {
 			if (event.keyCode == 39) {
 				if (krog1.power < 41)
 					krog1.power += 2;
+
 				else
 					krog1.power = 0;
 				izris();
@@ -496,7 +583,6 @@ function main() {
 			if (event.keyCode == 88) {
 				krog2.velocity = krog2.power;
 				krog2.power = 0;
-				animate();
 			}
 			if (event.keyCode == 38) {
 				krog2.angle += 5;
@@ -508,6 +594,7 @@ function main() {
 			if (event.keyCode == 39) {
 				if (krog2.power < 41)
 					krog2.power += 2;
+
 				else
 					krog2.power = 0;
 				izris();
@@ -518,7 +605,7 @@ function main() {
 			if (event.keyCode == 88) {
 				krog3.velocity = krog3.power;
 				krog3.power = 0;
-				animate();
+
 			}
 			if (event.keyCode == 38) {
 				krog3.angle += 5;
